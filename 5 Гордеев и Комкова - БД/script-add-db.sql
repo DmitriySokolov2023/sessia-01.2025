@@ -1,0 +1,44 @@
+
+CREATE TABLE Customers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) NOT NULL UNIQUE,
+    address VARCHAR(255) NULL,
+    email VARCHAR(100) UNIQUE
+);
+
+
+CREATE TABLE Employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    phone VARCHAR(15) NOT NULL UNIQUE
+);
+
+CREATE TABLE Pizzas (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+	size VARCHAR(20) NOT NULL,
+    price NUMERIC(10, 2) NOT NULL
+);
+
+
+CREATE TABLE Orders (
+    id SERIAL PRIMARY KEY,
+    customer_id INT NOT NULL,
+    employee_id INT,
+    order_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    status BOOLEAN NOT NULL DEFAULT FALSE,
+    CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES Customers(id) ON DELETE CASCADE,
+    CONSTRAINT fk_employee FOREIGN KEY (employee_id) REFERENCES Employees(id) ON DELETE SET NULL
+);
+
+
+CREATE TABLE OrderDetails (
+    id SERIAL PRIMARY KEY,
+    order_id INT NOT NULL,
+    pizza_id INT NOT NULL,
+    quantity INT NOT NULL,
+    CONSTRAINT fk_order FOREIGN KEY (order_id) REFERENCES Orders(id) ON DELETE CASCADE,
+    CONSTRAINT fk_pizza FOREIGN KEY (pizza_id) REFERENCES Pizzas(id) ON DELETE CASCADE
+);

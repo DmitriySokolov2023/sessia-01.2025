@@ -1,31 +1,25 @@
-from random import randint  
+A = [
+    [ 2, -3,  1,  5, -6,  4],
+    [-1,  3, -2,  7,  8, -5],
+    [ 9, -4,  6, -8,  1,  2],
+    [ 7,  5, -3,  4, -2,  6],
+    [-8,  1,  2, -7,  3,  5],
+    [ 4, -6,  7, -1,  9, -3]
+]
 
-numbers = []
-for i in range(4):
-    numbers.append(randint(1,5))
+n = 6  # Размер матрицы
 
-print(numbers)
+main_diag = 1
 
-max = numbers[0]
-min = numbers[0]
+for i in range(n):
+    if A[i][i] > 0:
+        main_diag *= A[i][i]
 
-for num in numbers:
-    if num > max:
-        max = num
-    if num < min:
-        min = num
+sec_diag = 0
 
-count_max = 0
-count_min = 0
+for i in range(n):
+    sec_diag += A[i][n - 1 - i]
 
-#Ищем кол-во повторений
-for num in numbers:
-    if(num == max):
-        count_max+=1
-    if(num == min):
-        count_min+=1
-
-print('Максимальное число: ',max)
-print('Минимальное число: ', min)
-print('Кол-во максимальных чисел: ', count_max)
-print('Кол-во минимальных чисел: ', count_min)
+# Вывод результатов
+print("Произведение положительных элементов главной диагонали:", main_diag)
+print("Сумма элементов побочной диагонали:", sec_diag)

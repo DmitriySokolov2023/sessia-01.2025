@@ -1,31 +1,23 @@
-A = [
-    [ 2, -3,  1,  5, -6,  4],
-    [-1,  3, -2,  7,  8, -5],
-    [ 9, -4,  6, -8,  1,  2],
-    [ 7,  5, -3,  4, -2,  6],
-    [-8,  1,  2, -7,  3,  5],
-    [ 4, -6,  7, -1,  9, -3]
-]
 
-n = 6  # Размер матрицы
+N = [] 
 
-product_main_diag = 1
+for i in range(1,21):
+    N.append(i)
 
-for i in range(n):
-    if A[i][i] > 0:
-        product_main_diag *= A[i][i]
-        found_positive = True
+# Создаем пустой массив Y
+Y = [0] * 20 
 
-# Если положительных чисел нет, устанавливаем 0
-if not found_positive:
-    product_main_diag = 0
+# Записываем квадраты чисел из N в Y
+for i in range(20):
+    Y[i] = N[i] * N[i] 
 
-# 2. Найти сумму элементов побочной диагонали
-sum_secondary_diag = 0
 
-for i in range(n):
-    sum_secondary_diag += A[i][n - 1 - i]
+print("Массив N:")
+for i in range(20):
+    print(N[i], end=" ")
+print()
 
-# Вывод результатов
-print("Произведение положительных элементов главной диагонали:", product_main_diag)
-print("Сумма элементов побочной диагонали:", sum_secondary_diag)
+print("Массив Y (квадраты чисел из N):")
+for i in range(20):
+    print(Y[i], end=" ")
+print()

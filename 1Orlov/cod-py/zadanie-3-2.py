@@ -1,4 +1,5 @@
-import pygame
+#Визуализация метода сортировки на pygame
+import pygame 
 import random
 import time
 
@@ -8,9 +9,9 @@ pygame.init()
 # Настройки окна
 WIDTH = 800
 HEIGHT = 600
-FPS = 60  # частота обновления экрана (FPS)
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Визуализация сортировки методом пузырька")
+FPS = 15  # частота обновления экрана (FPS)
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT)) #создаем экран приложения
+pygame.display.set_caption("Визуализация сортировки методом пузырька") #заголовок окна
 
 # Цвета
 WHITE = (255, 255, 255)
@@ -20,7 +21,10 @@ BLACK = (0, 0, 0)
 
 # Генерация случайного массива
 def generate_array(size):
-    return [random.randint(1, 100) for _ in range(size)]
+    arr = []
+    for _ in range(size):
+        arr.append(random.randint(1,100))
+    return arr
 
 # Сортировка методом пузырька с анимацией
 def bubble_sort_animation(arr):
@@ -39,7 +43,7 @@ def bubble_sort_animation(arr):
 # Функция для рисования массива на экране
 def draw_array(arr, highlighted1=None, highlighted2=None):
     SCREEN.fill(WHITE)
-    bar_width = WIDTH // len(arr)
+    bar_width = WIDTH / len(arr)
 
     for i, val in enumerate(arr):
         bar_height = (val / 100) * HEIGHT

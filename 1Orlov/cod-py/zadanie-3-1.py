@@ -77,6 +77,7 @@ def rnd_array(size):
     arr= []
     for _ in range(size):
         arr.append(random.randint(0,100)) # Заполнение массива рандомными числами от 1 до 100 (размерностью size)
+    return arr
 
 
 

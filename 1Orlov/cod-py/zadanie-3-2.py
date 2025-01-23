@@ -56,7 +56,7 @@ def draw_array(arr, highlighted1=None, highlighted2=None):
 
 # Основная функция
 def main():
-    array_size = 50  # Размер массива
+    array_size = 20  # Размер массива
     arr = generate_array(array_size)
 
     # Отображаем начальный массив
